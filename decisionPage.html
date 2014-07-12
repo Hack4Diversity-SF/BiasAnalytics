@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+	<script>
+		function selectedFirstResume(){
+			document.getElementById("testing").innerHTML = "Selected the first resume";
+		}
+		function selectedSecondResume () {
+			document.getElementById("testing").innerHTML = "Selected the second resume";
+		}
+	</script>
+
+</head>
+
+
+<body> 
+<p> Who's the stronger candidate?</p>
+
+<div>
+	<input type = "submit" value = "First Resume" onclick = "selectedFirstResume()">
+
+	<input type = "submit" value = "Second Resume" onclick = "selectedSecondResume()">
+
+</div>
+
+<div id = "testing">
+	<p></p>
+</div>
+
+</body>
+</html>
