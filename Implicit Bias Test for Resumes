@@ -1,0 +1,36 @@
+Implicit Bias Test for Resumes
+
+2 min timer
+
+Race: name
+Location: 
+School [race, prestige, state vs. private]
+GPA
+Major
+Degree
+Formality-Informal Education/Experience [hackathons, fb internship, startup internship]
+Age
+Gender
+
+
+Recruiter [scores per criteria]
+Company [preferences]
+
+Flow for companies: 
+Sign Up
+Set Preferences
+
+Flow for recruiters: 
+Log in
+
+5x
+1m resume
+1m second resume
+choose for 5s
+
+break!
+
+again!
+
+company: 10 count, name, 
+resume: Image 10 values for qualities
