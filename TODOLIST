@@ -1,0 +1,32 @@
+Results:
+ +1 for Control
+ -1 for nonControl
+
+ Range for final is -15 to 15. 
+
+Range 
+
+Front End
+1. Send 2nd resume to button page
+2. Timer
+  - Reading - 7 seconds
+  - Choosing resume - 5 seconds
+    - click on name/resume 1 or 2
+  - display the timer (if we have time to implement)
+3. Connect buttons
+  - Final button sends score to back end (Backlog)
+  - Generate the representation of the score, ranging betweeon -12 and 12 - TODODO
+4. Make it look nice - Bootstrap!
+5. Home/Spalsh/Info Page 
+  - About us page
+6. Display results
+
+Server Side
+1. Parse the choices - BACKLOG
+  - how it relates to race
+  - Send the results 
+2. Make data
+ - Just 5 pairs people 
+ - 1 for each catagories 
+   Pairs: White Latino, Black Latino, Asian Latino, Black White 
+3. Put up the url - heroku 
