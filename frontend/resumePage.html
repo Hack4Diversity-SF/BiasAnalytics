@@ -29,8 +29,23 @@
 	</pre></div>
 
 </div>
+<!--displaynon as a way to switch between divs-->
+<div class="decision">
 
+	<p> Who's the stronger candidate?</p>
 
+<div>
+	<input type = "submit" value = "First Resume" onclick = "selectedFirstResume()">
+
+	<input type = "submit" value = "Second Resume" onclick = "selectedSecondResume()">
+
+</div>
+
+<div id = "testing">
+	<p></p>
+</div>
+
+</div>
 
 </body>
 <script type="text/javascript">
@@ -81,6 +96,8 @@
 					gradYear = null;
 					randGPA = null;
 
+				} else (index%2==0) {
+					//TODO Send the first thing 
 				}
 				else{
 					window.setTimeout(function(){displayPage(index+1, data)}, 5000);
