@@ -82,6 +82,9 @@
 		var displayDecisionPage = function(index, data){
 			if(index == numberOfPeople){
 				//Display last page
+				$(".resume").hide();
+				$(".decision").hide();
+				$(".results").show();
 				window.setTimeout(function(){displayResultsPage(tally)}, decisionWait);
 			}
 			else{
