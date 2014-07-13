@@ -48,10 +48,17 @@ for (var i=0; i< genders.length; i++) {
 		for (var k=0; k < firsts.length; k++) {
 			var lasts = last_names[races[j]];
 			for (var m=0; m < lasts.length; m++) {
-				console.log(firsts[k] + " " + lasts[m]);
+				var person = {};
+				person.name = firsts[k] + " " + lasts[m];
+				person.gender = genders[i];
+				person.race = races[j];
+				console.log(person.name + ' ' + person.gender + ' ' + person.race);
+				db.names.insert(person, function (err, newDoc) {});
 			}	
 		}
 	}
 }
 
-//db.resumes.insert(resume, function (err, newDoc) {});
+db.names.find({gender: 'male', race: 'latino'}, function (err, docs) {
+	console.log(docs);
+});
