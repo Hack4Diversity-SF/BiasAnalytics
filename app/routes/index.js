@@ -2,13 +2,16 @@ var express = require('express');
 var router = express.Router();
 var db = require('../generate_data');
 
-/* GET home page. */
-router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+router.get('/', function(req, res){
+        res.sendfile("views/index.html");
+});
+
+router.get('/company/:id', function(req, res){
+        res.sendfile("views/resumePage.html");
 });
 
 /* GET resumes */
-router.'/company/:id/resumes', function(req, res){
+router.get('/company/:id/resumes', function(req, res){
 	JSONResponse = {
 		'pairs': [
 			{
@@ -59,11 +62,9 @@ router.'/company/:id/resumes', function(req, res){
 					race: 'latino'
 				}
 			}
-
-
 		]
 	}
-  	res.render('index', { title: 'Express' });
+  	res.render(JSON.stringify(JSONResponse));
 });
 
 module.exports = router;
