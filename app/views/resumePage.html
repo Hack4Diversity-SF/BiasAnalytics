@@ -58,7 +58,24 @@
 		var numberOfPeople = 30;
 		var resumeWait = 5000;
 		var decisionWait = 5000;
-		var isFirstResumeControl = false; //if the first resume is the controll, then it is true otherwise false
+		var isFirstResumeControl = false; //if the first resume is the control, then it is true otherwise false
+		var selectedFirstResume = function(){
+			if(isFirstResumeControl){
+				tally++;
+			}
+			else{
+				tally--;
+			}
+		}
+		var selectedSecondResume = function() {
+			if(!isFirstResumeControl){
+				tally++;
+			}
+			else{
+				tally--;
+			}
+		}
+
 		var displayResultsPage = function(tally){
 			$(".results").show();
 		}
@@ -111,10 +128,11 @@
 					randGPA = null;
 					$(".resume").hide();
 					$(".decision").show();
+					if(data[index].control) isFirstResumeControl = false;
 					window.setTimeout(function(){displayDecisionPage(index+1, data)}, resumeWait);
 				} 
 				else{
-					if(data[index].)
+					if(data[index].control) isFirstResumeControl = true;
 					window.setTimeout(function(){displayPage(index+1, data)}, resumeWait);
 				}
 			}
