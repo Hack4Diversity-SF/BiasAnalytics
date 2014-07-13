@@ -34,35 +34,49 @@
 
 	<p> Who's the stronger candidate?</p>
 
-<div>
-	<input type = "submit" value = "First Resume" onclick = "selectedFirstResume()">
+	<div>
+		<input type = "submit" value = "First Resume" onclick = "selectedFirstResume()">
 
-	<input type = "submit" value = "Second Resume" onclick = "selectedSecondResume()">
+		<input type = "submit" value = "Second Resume" onclick = "selectedSecondResume()">
+
+	</div>
+
+	<div id = "testing">
+		<p></p>
+	</div>
 
 </div>
 
-<div id = "testing">
-	<p></p>
-</div>
-
-</div>
+<div class="results"></div>
 
 </body>
 <script type="text/javascript">
-
-	// var time = 30000;
-	// var cb1 = function(data, textStatus, jqXHR ){
-	// 	$(".name").html(data.name);
-	// 	$(".university").html(data.university);
-	// 	var time = 30000;
-	// 	$.get("/company/:id/choice");
-	// }
-	// $.get("/company/:id/resumes/2", cb1);
 	(function($) {
 		var gradYear;
 		var gpaNum;
+		var tally = 0;
+		var numberOfPeople = 30;
+		var resumeWait = 5000;
+		var decisionWait = 5000;
+		var isFirstResumeControl = false; //if the first resume is the controll, then it is true otherwise false
+		var displayResultsPage = function(tally){
+			$(".results").show();
+		}
+		var displayDecisionPage = function(index, data){
+			if(index == numberOfPeople){
+				//Display last page
+				window.setTimeout(function(){displayResultsPage(tally)}, decisionWait);
+			}
+			else{
+				//pass on 
+				$(".resume").show();
+				$(".decision").hide();
+				window.setTimeout(function(){displayPage(index, data)}, decisionWait);
+			}
+
+		}
 		var displayPage = function(index, data){ 
-			if(index<15){
+			if(index<numberOfPeople){
 				$(".name").html(data[index].name);
 				var nameArray = data[index].name.split(" ");
 				console.log(data[index].name);
@@ -95,16 +109,19 @@
 					//second in the set
 					gradYear = null;
 					randGPA = null;
-
-				} else (index%2==0) {
-					//TODO Send the first thing 
-				}
+					$(".resume").hide();
+					$(".decision").show();
+					window.setTimeout(function(){displayDecisionPage(index+1, data)}, resumeWait);
+				} 
 				else{
-					window.setTimeout(function(){displayPage(index+1, data)}, 5000);
+					if(data[index].)
+					window.setTimeout(function(){displayPage(index+1, data)}, resumeWait);
 				}
 			}
 		}
 		var cb1 = function(data, textStatus, jqXHR){
+			$(".results").hide();
+			$(".decision").hide();
 			displayPage(0, data);
 					//iterating over an array of page objects
 		}
