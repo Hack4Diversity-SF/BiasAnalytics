@@ -13,50 +13,58 @@ router.'/company/:id/resumes', function(req, res){
 		'pairs': [
 			{
 				'first': {
-					name: 'Vishesh Sohmshetty',
-					gender: 'male',
-					race: 'indian'
-				},
-				'second': {
 					name: 'Juan Lopez',
 					gender: 'male',
-					race: 'latino'
+					race: 'latino',
+					control: 'true'
+				},
+				'second': {
+					name: 'Vishesh Sohmshetty',
+					gender: 'male',
+					race: 'indian',
+					control: 'false'
 				}
 			},
 			{
 				'first': {
 					name: 'Lei Yao',
 					gender: 'female',
-					race: 'asian'
+					race: 'asian',
+					control: 'false'
 				},
 				'second': {
 					name: 'Rosa Garcia',
 					gender: 'female',
-					race: 'latino'
+					race: 'latino',
+					control: 'true'
 				}
 			},
 			{
 				'first': {
 					name: 'Aliyah Jackson',
 					gender: 'female',
-					race: 'black'
+					race: 'black',
+					control: 'false'
 				},
 				'second': {
 					name: 'Molly Brady',
 					gender: 'female',
-					race: 'white'
+					race: 'white',
+					control: 'true'
 				}
 			},
 			{
 				'first': {
-					name: 'Dustin Brown',
-					gender: 'male',
-					race: 'white'
-				},
-				'second': {
 					name: 'Gerardo Martinez',
 					gender: 'male',
-					race: 'latino'
+					race: 'latino',
+					control: 'true'
+				},
+				'second': {
+					name: 'Dustin Brown',
+					gender: 'male',
+					race: 'white',
+					control: 'false'
 				}
 			}
 
