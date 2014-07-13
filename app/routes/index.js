@@ -3,7 +3,7 @@ var router = express.Router();
 var db = require('../generate_data');
 
 router.get('/', function(req, res){
-        res.render("index", {title:"We are here"});
+        res.render("index", {title:"Bias Analytics"});
 });
 
 router.get('/company/:id', function(req, res){
