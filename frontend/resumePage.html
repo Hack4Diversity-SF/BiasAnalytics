@@ -17,8 +17,6 @@
 	<div class="phone">(123)      456-7890</div>
 	<div class="address1">1 Hacker Way<br/> 
 		Menlo Park, CA 94025</div>
-	<div class="address2">1601 Willow Rd<br/>
-		Menlo Park, CA 94025</div>
 	<div class="education">
 		<div class="university">University of California at Berkeley</div>
 		<div class="year">Class of 2016</div>
@@ -46,27 +44,47 @@
 	// }
 	// $.get("/company/:id/resumes/2", cb1);
 	(function($) {
+		var gradYear;
+		var gpaNum;
 		var displayPage = function(index, page){
 			$(".name").html(data.name);
 			var nameArray = data.name.split(" ");
-			$("email").html(nameArray[0]+ "."+nameArray[1]+"@gmail.com");		//todo: randomize domain name of email address
+			$(".email").html(nameArray[0]+ "."+nameArray[1]+"@gmail.com");		//todo: randomize domain name of email address
 			var setOfThree=Math.floor(Math.random()*1001);
 			var setOfFour = Math.floor(Math.random() * 10001);
-			var areaCodes = ["(650)", "(212)", "(773)"];
+			var areaCodes = ["(650)", "(212)", "(773)"];						//todo: prevent the same pair having the same info
 			var rand = Math.floor(Math.random() *areaCodes.length);
 			var areaCode = areaCodes[rand];
-			$.("phone").html("("+areaCode+") "+setOfThree+"-"+setOfFour);
-			$(".university").html(data.university);
+			$(".phone").html("("+areaCode+") "+setOfThree+"-"+setOfFour);
+			var addressNumbers = [222,3897,1873,5679,13, 10];
+			var streets = ["Harrow Rd.", "54th St.", "Whisman Rd.", "Oak Grove", "Kenmore St.", "Blackstone Ave."];
+			var cities = ["Menlo Park, CA 94025", "Chicago, IL 60615", "Des Moines, IA 50009", "Charlottesville, VA 22903", "Austin, TX 73301"];
+			var randNumber = Math.floor(Math.random() * addressNumbers.length);
+			var randSt = Math.floor(Math.random() * streets.length);
+			var randCity = Math.floor(Math.random() * cities.length);
+			$(".address").html(addressNumbers[randNumber] + " " +streets[randSt] + "<br/>" + cities[randCity]);
 
+			$(".university").html(data.university);
+			var randGradYear = 2000 + Math.floor(Math.random() * 18);
+			gradYear = gradYear || randGradYear
+			$(".year").html(gradYear);
+
+			var randGPA = 2.5 + Math.random *1.5;
+			gpaNum = gpaNum || randGPA;
+			$(".gpa").html(gpaNum);
+
+			$(".degree").html("B.S. in Computer Science");
 			if(index%2 == 1){
-				//first page
+				//second in the set
+				gradYear = null;
+				randGPA = null;
 
 			}
 		}
 		var cb1 = function(data, textStatus, jqXHR){
 			$.each(data, displayPage);			//iterating over an array of page objects
 		}
-		$.get("/company/:id/resumes", cb1);
+		$.get("/company/abc/resumes", cb1);
 	})(jQuery)
 
 </script>
