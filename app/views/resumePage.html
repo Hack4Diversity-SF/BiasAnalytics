@@ -55,29 +55,70 @@
 		<p> Who's the stronger candidate?</p>
 	
 		<div>
-			<input type = "submit" value = "First Resume" onclick = "selectedFirstResume()">
-			<input type = "submit" value = "Second Resume" onclick = "selectedSecondResume()">
+			<input type = "submit" value = "First Resume" onclick = "selectedFirstResume();"/>
+			<input type = "submit" value = "Second Resume" onclick = "selectedSecondResume();"/>
 		</div>
 		<div id = "testing">
 			<p></p>
 		</div>
 	</div>
+
+
+<div class="results"></div>
+
 </body>
 <script type="text/javascript">
-
-	// var time = 30000;
-	// var cb1 = function(data, textStatus, jqXHR ){
-	// 	$(".name").html(data.name);
-	// 	$(".university").html(data.university);
-	// 	var time = 30000;
-	// 	$.get("/company/:id/choice");
-	// }
-	// $.get("/company/:id/resumes/2", cb1);
+	function selectedFirstResume(){
+			if(isFirstResumeControl){
+				tally++;
+			}
+			else{
+				tally--;
+			}
+			console.log(tally);
+		}
+	function selectedSecondResume() {
+		if(!isFirstResumeControl){
+			tally++;
+		}
+		else{
+			tally--;
+		}
+		console.log(tally);
+	}
 	(function($) {
 		var gradYear;
 		var gpaNum;
+	    tally = 0;
+		var numberOfPeople = 8;
+		var resumeWait = 5000;
+		var decisionWait = 5000;
+		isFirstResumeControl = false; //if the first resume is the control, then it is true otherwise false
+
+		var displayResultsPage = function(tally){
+			$(".results").show();
+			//window.location.href("/")
+		}
+		var displayDecisionPage = function(index, data){
+			if(index == numberOfPeople){
+				//Display last page
+				$(".resume").hide();
+				$(".decision").hide();
+				$(".results").show();
+				window.setTimeout(function(){displayResultsPage(tally)}, decisionWait);
+			}
+			else{
+				//pass on 
+				$(".resume").hide();
+				$(".decision").show();
+				window.setTimeout(function(){displayPage(index, data)}, decisionWait);
+			}
+
+		}
 		var displayPage = function(index, data){ 
-			if(index<15){
+			$(".resume").show();
+			$(".decision").hide();
+			if(index<numberOfPeople){
 				$(".name").html(data[index].name);
 				var nameArray = data[index].name.split(" ");
 				console.log(data[index].name);
@@ -110,16 +151,18 @@
 					//second in the set
 					gradYear = null;
 					randGPA = null;
-
-				} else (index%2==0) {
-					//TODO Send the first thing 
-				}
+					if(data[index].control) isFirstResumeControl = false;
+					window.setTimeout(function(){displayDecisionPage(index+1, data)}, resumeWait);
+				} 
 				else{
-					window.setTimeout(function(){displayPage(index+1, data)}, 5000);
+					if(data[index].control) isFirstResumeControl = true;
+					window.setTimeout(function(){displayPage(index+1, data)}, resumeWait);
 				}
 			}
 		}
 		var cb1 = function(data, textStatus, jqXHR){
+			$(".results").hide();
+			$(".decision").hide();
 			displayPage(0, data);
 					//iterating over an array of page objects
 		}
