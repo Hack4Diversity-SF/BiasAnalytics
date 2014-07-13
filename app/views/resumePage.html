@@ -35,9 +35,9 @@
 	<p> Who's the stronger candidate?</p>
 
 	<div>
-		<input type = "submit" value = "First Resume" onclick = "selectedFirstResume()">
+		<input id="first" type = "submit" value = "First Resume" onclick = "selectedFirstResume();"></input>
 
-		<input type = "submit" value = "Second Resume" onclick = "selectedSecondResume()">
+		<input id="second" type = "submit" value = "Second Resume" onclick = "selectedSecondResume();"></input>
 
 	</div>
 
@@ -51,33 +51,36 @@
 
 </body>
 <script type="text/javascript">
-	(function($) {
-		var gradYear;
-		var gpaNum;
-		var tally = 0;
-		var numberOfPeople = 30;
-		var resumeWait = 5000;
-		var decisionWait = 5000;
-		var isFirstResumeControl = false; //if the first resume is the control, then it is true otherwise false
-		var selectedFirstResume = function(){
+	function selectedFirstResume(){
 			if(isFirstResumeControl){
 				tally++;
 			}
 			else{
 				tally--;
 			}
+			console.log(tally);
 		}
-		var selectedSecondResume = function() {
-			if(!isFirstResumeControl){
-				tally++;
-			}
-			else{
-				tally--;
-			}
+	function selectedSecondResume() {
+		if(!isFirstResumeControl){
+			tally++;
 		}
+		else{
+			tally--;
+		}
+		console.log(tally);
+	}
+	(function($) {
+		var gradYear;
+		var gpaNum;
+	    tally = 0;
+		var numberOfPeople = 8;
+		var resumeWait = 5000;
+		var decisionWait = 5000;
+		isFirstResumeControl = false; //if the first resume is the control, then it is true otherwise false
 
 		var displayResultsPage = function(tally){
 			$(".results").show();
+			//window.location.href("/")
 		}
 		var displayDecisionPage = function(index, data){
 			if(index == numberOfPeople){
@@ -89,13 +92,15 @@
 			}
 			else{
 				//pass on 
-				$(".resume").show();
-				$(".decision").hide();
+				$(".resume").hide();
+				$(".decision").show();
 				window.setTimeout(function(){displayPage(index, data)}, decisionWait);
 			}
 
 		}
 		var displayPage = function(index, data){ 
+			$(".resume").show();
+			$(".decision").hide();
 			if(index<numberOfPeople){
 				$(".name").html(data[index].name);
 				var nameArray = data[index].name.split(" ");
@@ -129,8 +134,6 @@
 					//second in the set
 					gradYear = null;
 					randGPA = null;
-					$(".resume").hide();
-					$(".decision").show();
 					if(data[index].control) isFirstResumeControl = false;
 					window.setTimeout(function(){displayDecisionPage(index+1, data)}, resumeWait);
 				} 
