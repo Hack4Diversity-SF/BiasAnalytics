@@ -6,6 +6,10 @@ router.get('/', function(req, res){
         res.render("index", {title:"Bias Analytics"});
 });
 
+router.get('/resume.css', function(req, res){
+        res.sendfile("views/resume.css");
+});
+
 router.get('/company/:id', function(req, res){
         res.sendfile("views/resumePage.html");
 });

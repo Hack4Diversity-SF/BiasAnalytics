@@ -2,7 +2,9 @@
 <html>
 
 
-<head> 
+<head>
+	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+	<link rel="stylesheet" type="text/css" href="/resume.css">
 	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 
@@ -11,40 +13,59 @@
 
 <div class="resume">
 
-	<div class="name">Olivia Perozo</div>
-	<!--<div class="age"> </div>-->
-	<div class="email">epdfjiohij@gmail.com</div>
-	<div class="phone">(123)      456-7890</div>
-	<div class="address1">1 Hacker Way<br/> 
-		Menlo Park, CA 94025</div>
+	<div class="addresBlock">
+		<div class="name">Olivia Perozo</div>
+		<!--<div class="age"> </div>-->
+		<div class="email">epdfjiohij@gmail.com</div>
+		<div class="phone">(123)      456-7890</div>
+		<div class="address1">1 Hacker Way<br/> 
+			Menlo Park, CA 94025</div>
+	</div>
+	
 	<div class="education">
+		<div class="header">Education:</div>
 		<div class="university">University of California at Berkeley</div>
 		<div class="year">Class of 2016</div>
-		<div class="gpa">4.0</div>
+		<div class="gpa">GPA: <span class="num">4.0</span></div>
 		<div class="degree">B.A. in History</div>
 	</div>
-	<div class="experience"><pre>
-		6/13-9/13		Teacher’s Assistant, University of Chicago Masters Program in CS
-        6/12-9/12	    Grader during the summer of 2012 promoted to Teacher’s Assistant for the summer of 2013 for CSPP 50101 Concepts of Programming (Immersion Java).  I graded tests and homework assignments in addition to holding 2 hour review and help sessions once a week and responding to student questions online.
-	</pre></div>
+	<div class="experience">
+		<div class="header">Experience:</div>
+		<pre>
+6/13-9/13		Teacher’s Assistant, University of Chicago Masters Program in CS
+
+6/12-9/12	        Grader during the summer of 2012 promoted to Teacher’s Assistant 
+                       for the summer of 2013 for CSPP 50101 Concepts of Programming 
+                       (Immersion Java).  I graded tests and homework assignments in 
+                       addition to holding 2 hour review and help sessions once a week 
+                       and responding to student questions online.
+
+6/12-9/12	        Grader during the summer of 2012 promoted to Teacher’s Assistant 
+                       for the summer of 2013 for CSPP 50101 Concepts of Programming 
+                       (Immersion Java).  I graded tests and homework assignments in 
+                       addition to holding 2 hour review and help sessions once a week 
+                       and responding to student questions online.
+
+6/12-9/12	        Grader during the summer of 2012 promoted to Teacher’s Assistant 
+                       for the summer of 2013 for CSPP 50101 Concepts of Programming 
+                       (Immersion Java).  I graded tests and homework assignments in 
+                       addition to holding 2 hour review and help sessions once a week 
+                       and responding to student questions online.
+		</pre>
+	</div>
 
 </div>
 <!--displaynon as a way to switch between divs-->
 <div class="decision">
-
 	<p> Who's the stronger candidate?</p>
 
-<div>
-	<input type = "submit" value = "First Resume" onclick = "selectedFirstResume()">
-
-	<input type = "submit" value = "Second Resume" onclick = "selectedSecondResume()">
-
-</div>
-
-<div id = "testing">
-	<p></p>
-</div>
-
+	<div>
+		<input type = "submit" value = "First Resume" onclick = "selectedFirstResume()">
+		<input type = "submit" value = "Second Resume" onclick = "selectedSecondResume()">
+	</div>
+	<div id = "testing">
+		<p></p>
+	</div>
 </div>
 
 </body>
