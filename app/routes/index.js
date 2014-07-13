@@ -3,7 +3,7 @@ var router = express.Router();
 var db = require('../generate_data');
 
 router.get('/', function(req, res){
-        res.sendfile("views/index.html");
+        res.render("index", {title:"We are here"});
 });
 
 router.get('/company/:id', function(req, res){
@@ -72,7 +72,7 @@ router.get('/company/:id/resumes', function(req, res){
 			}
 		]
 	}
-  	res.render(JSON.stringify(JSONResponse));
+  	res.send(JSON.stringify(JSONResponse));
 });
 
 module.exports = router;
