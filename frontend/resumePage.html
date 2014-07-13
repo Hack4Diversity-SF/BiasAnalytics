@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+
+<head> 
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+
+
+<body> 
+
+<div class="resume">
+
+	<div class="name">Olivia Perozo</div>
+	<!--<div class="age"> </div>-->
+	<div class="email">epdfjiohij@gmail.com</div>
+	<div class="phone">(123)      456-7890</div>
+	<div class="address1">1 Hacker Way<br/> 
+		Menlo Park, CA 94025</div>
+	<div class="address2">1601 Willow Rd<br/>
+		Menlo Park, CA 94025</div>
+	<div class="education">
+		<div class="university">University of California at Berkeley</div>
+		<div class="year">Class of 2016</div>
+		<div class="gpa">4.0</div>
+		<div class="degree">B.A. in History</div>
+	</div>
+	<div class="experience"><pre>
+		6/13-9/13		Teacher’s Assistant, University of Chicago Masters Program in CS
+        6/12-9/12	    Grader during the summer of 2012 promoted to Teacher’s Assistant for the summer of 2013 for CSPP 50101 Concepts of Programming (Immersion Java).  I graded tests and homework assignments in addition to holding 2 hour review and help sessions once a week and responding to student questions online.
+	</pre></div>
+
+</div>
+
+
+
+</body>
+<script type="text/javascript">
+
+	// var time = 30000;
+	// var cb1 = function(data, textStatus, jqXHR ){
+	// 	$(".name").html(data.name);
+	// 	$(".university").html(data.university);
+	// 	var time = 30000;
+	// 	$.get("/company/:id/choice");
+	// }
+	// $.get("/company/:id/resumes/2", cb1);
+	(function($) {
+		var displayPage = function(index, page){
+			$(".name").html(data.name);
+			var nameArray = data.name.split(" ");
+			$("email").html(nameArray[0]+ "."+nameArray[1]+"@gmail.com");		//todo: randomize domain name of email address
+			var setOfThree=Math.floor(Math.random()*1001);
+			var setOfFour = Math.floor(Math.random() * 10001);
+			var areaCodes = ["(650)", "(212)", "(773)"];
+			var rand = Math.floor(Math.random() *areaCodes.length);
+			var areaCode = areaCodes[rand];
+			$.("phone").html("("+areaCode+") "+setOfThree+"-"+setOfFour);
+			$(".university").html(data.university);
+
+			if(index%2 == 1){
+				//first page
+
+			}
+		}
+		var cb1 = function(data, textStatus, jqXHR){
+			$.each(data, displayPage);			//iterating over an array of page objects
+		}
+		$.get("/company/:id/resumes", cb1);
+	})(jQuery)
+
+</script>
+</html>
