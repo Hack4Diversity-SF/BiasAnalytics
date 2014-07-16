@@ -76,6 +76,8 @@
 				tally--;
 			}
 			console.log(tally);
+			//nextPage();
+			$(".decision").hide();
 		}
 	function selectedSecondResume() {
 		if(!isFirstResumeControl){
@@ -85,14 +87,22 @@
 			tally--;
 		}
 		console.log(tally);
+		//nextPage();
+		$(".decision").hide();
+		displayPage(index, data);
 	}
+
+/*	function nextPage() {
+			document.getElementByClass("decision").hide();
+	} */
+
 	(function($) {
 		var gradYear;
 		var gpaNum;
 	    tally = 0;
 		var numberOfPeople = 8;
-		var resumeWait = 5000;
-		var decisionWait = 5000;
+		var resumeWait = 3000;
+		var decisionWait = 2000;
 		isFirstResumeControl = false; //if the first resume is the control, then it is true otherwise false
 
 		var displayResultsPage = function(tally){
